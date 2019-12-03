@@ -15,7 +15,7 @@ def gravity_assist_program(intcode_arr, current_position=0):
     next_position = current_position + 4
     return gravity_assist_program(intcode_arr, next_position)
 
-def brute_result(intcode_arr, max_val):
+def brute_result(intcode_arr, max_val, target_val):
     max_range = range(0, max_val)
     for x in max_range:
         for y in max_range:
@@ -23,5 +23,5 @@ def brute_result(intcode_arr, max_val):
             replaced_arr[1] = x
             replaced_arr[2] = y
             program_output = gravity_assist_program(replaced_arr)[0]
-            if program_output == 19690720:
+            if program_output == target_val:
                 return [x, y]

@@ -9,7 +9,7 @@ input1[2] = 2
 restore_program = gravity_assist_program(input1)
 print("Restored program opcode: {}".format(restore_program))
 
-brute_values = brute_result(input2, 100)
+brute_values = brute_result(input2, 100, 19690720)
 
 noun = brute_values[0]
 verb = brute_values[1]
