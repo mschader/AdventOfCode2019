@@ -11,6 +11,21 @@ def closest_intersection(wire1, wire2):
             closest_result = current_distance
     return closest_result
 
+def cheapest_intersection(wire1, wire2):
+    wire1_coordinates = get_wire_coordinates(wire1)
+    wire2_coordinates = get_wire_coordinates(wire2)
+    wire_intersections = get_wire_intersections(wire1_coordinates, wire2_coordinates)
+    current_cost = (get_wire_length(wire_intersections[0], wire1_coordinates) + get_wire_length(wire_intersections[0], wire2_coordinates))
+    for i in range(1, len(wire_intersections)):
+        new_cost = get_wire_length(wire_intersections[i], wire1_coordinates) + get_wire_length(wire_intersections[i], wire2_coordinates)
+        if new_cost < current_cost:
+            current_cost = new_cost
+    return current_cost
+
+def get_wire_length(coordinate, wire_coords):
+    # Calculate +1 because [0,0] index is position 0 but counts as one
+    return wire_coords.index(coordinate) + 1
+
 def calc_distance_2D(x, y):
     return abs(x) + abs(y)
 
